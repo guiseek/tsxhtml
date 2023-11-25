@@ -1,0 +1,13 @@
+{
+  "name": "@tsx/parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build --emptyOutDir --outDir=../../dist/@tsx/parser"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

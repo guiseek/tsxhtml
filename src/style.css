@@ -1,0 +1,8 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 36px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
