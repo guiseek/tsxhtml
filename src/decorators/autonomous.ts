@@ -1,5 +1,5 @@
-export const autonomous = (name: `${string}-${string}`) => {
+export const autonomous = (name: string) => {
   return <T extends CustomElementConstructor>(target: T) => {
-    customElements.define(name, target)
+    customElements.define(`tsx-${name}`, target)
   }
 }

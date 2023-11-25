@@ -1,4 +1,4 @@
-import './style.css'
-import { App } from './app'
+import './style.scss'
+import { app } from './app'
 
-document.body.append(App())
+main.append(app())

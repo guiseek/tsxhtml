@@ -15,16 +15,10 @@ interface tsx {
 
 declare const tsx: tsx
 
-type ToEvents<S extends string> = S extends `on${infer T}` ? `on:${T}` : ''
-
-type FromEvents<S extends string> = S extends `on:${infer T}` ? `on${T}` : ''
-
-type EventHandlers = {
-  [K in ToEvents<keyof GlobalEventHandlers>]: GlobalEventHandlers[FromEvents<K>]
-}
-
 declare namespace JSX {
   type IntrinsicElements = {
-    [K in Tags]: Partial<ElmByTag<K> & EventHandlers>
+    [K in Tags]: Partial<ElmByTag<K>>
   }
 }
+
+declare const main: HTMLDivElement

@@ -1,7 +1,4 @@
 import type {ElmByTag, ElmFn, Ctor, Tags} from './types'
-import {children} from './children'
-import {element} from './element'
-import {props} from './props'
 
 export const tsx = {
   parse<K extends Tags>(
@@ -9,12 +6,10 @@ export const tsx = {
     attrs: Partial<ElmByTag<K>>,
     ...nodes: Node[]
   ) {
-    attrs = props(attrs ?? {})
-
     let component: ElmByTag<K>
 
     if (typeof tagOrFn === 'string') {
-      component = element(tagOrFn, attrs)
+      component = document.createElement(tagOrFn)
     } else {
       try {
         component = new (tagOrFn as Ctor<ElmByTag<K>>)(attrs)
@@ -23,9 +18,13 @@ export const tsx = {
       }
     }
 
-    component.append(...children(...nodes))
+    component.append(
+      ...nodes.flatMap((node) =>
+        typeof node === 'string' ? new Text(node) : node
+      )
+    )
 
-    return component
+    return Object.assign(component, attrs)
   },
   factory() {
     return new DocumentFragment()
